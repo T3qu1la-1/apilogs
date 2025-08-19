@@ -3,8 +3,7 @@ import sqlite3
 
 app = FastAPI(title="Credenciais API", version="1.0")
 
-# ==================== BANCO DE DADOS ====================
-DB_NAME = "credenciais.db"
+DB_NAME = "data/credenciais.db"
 conn = sqlite3.connect(DB_NAME, check_same_thread=False)
 cursor = conn.cursor()
 cursor.execute("""
@@ -17,7 +16,6 @@ cursor.execute("""
 """)
 conn.commit()
 
-# ==================== FUNÇÕES AUXILIARES ====================
 def classificar_tokens(tokens):
     url, user, senha = None, None, None
     for t in tokens:
@@ -42,7 +40,7 @@ def salvar_db(url, user, senha):
     )
     conn.commit()
 
-# ==================== ENDPOINTS ====================
+
 
 @app.post("/upload")
 async def upload(file: UploadFile = File(...)):
