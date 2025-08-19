@@ -1,0 +1,10 @@
+# Byte-compiled / cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Virtual envs
+venv/
+.env
